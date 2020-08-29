@@ -7,6 +7,8 @@ function App() {
   //STATES
   const [busqueda, setBusqueda] = useState('');
   const [imagenes, setImagenes] = useState([]);
+  const [paginaactual, setPaginaActual] = useState(1);
+  const [totalpaginas, setTotalPaginas] = useState(1);
 
   // USE EFFECT
   useEffect(() => {
@@ -20,6 +22,10 @@ function App() {
       const resultado = await respuesta.json();
       //console.log(resultado.hits);
       setImagenes(resultado.hits);
+
+      //calcular el total de paginas
+      const calcularTotalPaginas = Math.ceil(resultado.totalHits / imagenesPorPagina);
+      setTotalPaginas(calcularTotalPaginas);
     }
     consultarAPI();
 
@@ -46,3 +52,9 @@ function App() {
 }
 
 export default App;
+
+/**
+ *  ¿como definimos el total de paginas?
+ * Tenemos 30 imagenes x pagina, entonces debemos saber el total de imagenes.
+ * si tenemos 500 imagenes -> 500/30 son 16.6 paginas -> Math.ceil redondea hacia arriba
+ */
