@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
+import ListadoImagenes from './components/ListadoImagenes';
 
 function App() {
 
   //STATES
   const [busqueda, setBusqueda] = useState('');
+  const [imagenes, setImagenes] = useState([]);
 
   // USE EFFECT
   useEffect(() => {
@@ -17,7 +19,7 @@ function App() {
       const respuesta = await fetch(url);
       const resultado = await respuesta.json();
       //console.log(resultado.hits);
-      setBusqueda(resultado.hits);
+      setImagenes(resultado.hits);
     }
     consultarAPI();
 
@@ -31,6 +33,11 @@ function App() {
 
           <Formulario
             setBusqueda={setBusqueda}
+          />
+        </div>
+        <div className="row justify-content-center">
+          <ListadoImagenes
+            imagenes={imagenes}
           />
         </div>
       </div>
