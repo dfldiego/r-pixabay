@@ -68,7 +68,7 @@ function App() {
           {(paginaactual === 1) ? null : (
             <button
               type="button"
-              className="bbtn btn-info mr-1"
+              className="bbtn btn-info mr-1 mb-5"
               onClick={paginaAnterior}
             >&laquo; Anterior</button>
           )}
@@ -76,7 +76,7 @@ function App() {
           {(paginaactual === totalpaginas) ? null : (
             <button
               type="button"
-              className="bbtn btn-info"
+              className="bbtn btn-info mb-5"
               onClick={paginaSiguiente}
             >Siguiente &raquo;</button>
           )}
