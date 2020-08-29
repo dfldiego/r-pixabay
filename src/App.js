@@ -31,6 +31,20 @@ function App() {
 
   }, [busqueda])
 
+  // Definir la pagina anterior
+  const paginaAnterior = () => {
+    const nuevaPaginaActual = paginaactual - 1;
+    if (nuevaPaginaActual === 0) return;
+    setPaginaActual(nuevaPaginaActual);
+  }
+
+  //Definir la pagina siguiente
+  const paginaSiguiente = () => {
+    const nuevaPaginaActual = paginaactual + 1;
+    if (nuevaPaginaActual > totalpaginas) return;
+    setPaginaActual(nuevaPaginaActual);
+  }
+
   return (
     <>
       <div className="container">
@@ -45,6 +59,19 @@ function App() {
           <ListadoImagenes
             imagenes={imagenes}
           />
+
+          <button
+            type="button"
+            className="bbtn btn-info mr-1"
+            onClick={paginaAnterior}
+          >&laquo; Anterior</button>
+
+          <button
+            type="button"
+            className="bbtn btn-info"
+            onClick={paginaSiguiente}
+          >Siguiente &raquo;</button>
+
         </div>
       </div>
     </>
